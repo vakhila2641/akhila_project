@@ -1,2 +1,3 @@
 # akhila_project
-My project using the PowerBI
+My project in SQL
+
