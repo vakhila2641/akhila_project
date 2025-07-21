@@ -85,6 +85,7 @@ Select * from passengers_on_flights;
 Select * from routes;
 Select * from ticket_details;
 Select * from Route_details;
+
 /* 3.	Write a query to display all the passengers (customers) who have travelled in routes 01 to 25. 
 Take data from the passengers_on_flights table. */
 
@@ -100,6 +101,7 @@ from ticket_details where class_id = 'Bussiness';
 select count(customer_id) as Total_Cus,sum(Price_per_ticket) as Total_Revenue,
 row_number() over () as RN
  from air.ticket_details where class_id= 'Bussiness';
+ 
 /* 5.	Write a query to display the full name of the customer by extracting the first name 
 and last name from the customer table.*/
 Select * from air.customer;
@@ -193,10 +195,6 @@ Select
 if(
 sum(price_per_ticket) >10000, 'yes','no') as Rev_check
 from ticket_details;
-/* 10.	Write a query to create and grant access to a new user to perform operations on a database. */
-
-
-
 
 /*11.	Write a query to find the maximum ticket price for each class
  using window functions on the ticket_details table. */
@@ -217,12 +215,6 @@ Select * from air.passengers_on_flights where route_id = 4;
 /* For the route ID 4, write a query to view the execution plan of the passengers_on_flights table.*/
 
 Explain analyze select * FROM air.passengers_on_flights WHERE route_id = '4';
-
- /* 14.	Write a query to calculate the total price of all tickets booked by a customer
- across different aircraft IDs using rollup function. */
- 
- 
- 
  
  /* 15.	Write a query to create a view with only business class customers along with the brand of airlines. */
  
@@ -233,7 +225,8 @@ Explain analyze select * FROM air.passengers_on_flights WHERE route_id = '4';
  
  /* 16.	Write a query to create a stored procedure to get the details of all passengers flying between a range of routes 
  defined in run time. Also, return an error message if the table doesn't exist.*/
- Select * from passengers_on_flights;
+
+Select * from passengers_on_flights;
 DELIMITER $$
 CREATE PROCEDURE Flight_route_range(in flight_route_id1 INT, in flight_route_id2 INT)
 BEGIN
@@ -297,7 +290,8 @@ deterministic
 Begin
 Select * from routes where distance_miles > 2000;
 End $$
-Call DT();    
+Call DT();  
+
 /* 18.	Write a query to create a stored procedure that groups the distance travelled by each flight 
 into three categories. The categories are,  short distance travel (SDT) for >=0 AND <= 2000 miles, 
 intermediate distance travel (IDT) for >2000 AND <=6500, and long-distance travel (LDT) for >6500.*/
@@ -353,8 +347,6 @@ use air;
 Scott using a cursor from the customer table. */
 
 Select * from customer where last_name like  'scott%' limit 1;
-
-
 delimiter //
 create procedure Name_by_cursor()
 Begin	
